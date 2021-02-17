@@ -6,9 +6,15 @@
 <body style="height: 100%; margin: 0;">
 <div id="meet" style="height: 100%;"></div>
 <script src='https://meet.jit.si/external_api.js'></script>
+<script src='getQueryString.js'></script>
 <script>
+  let roomName = getQueryVariable('room');
+  if (!roomName) {
+    roomName = "bay_area2";
+  }
+
   api = new JitsiMeetExternalAPI("meet.jit.si", {
-    roomName: "bay_area2",
+    roomName: roomName,
     parentNode: document.querySelector("#meet"),
     configOverwrite: {
       subject: 'Bay Area 2'
