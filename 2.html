@@ -13,11 +13,16 @@
     roomName = "bay_area2";
   }
 
+  let roomDesc = getQueryVariable('desc');
+  if (!roomDesc) {
+    roomDesc = prettify(roomName);
+  }
+
   api = new JitsiMeetExternalAPI("meet.jit.si", {
     roomName: roomName,
     parentNode: document.querySelector("#meet"),
     configOverwrite: {
-      subject: 'Bay Area 2'
+      subject: roomDesc
     }
   });
 </script>
