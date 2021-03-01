@@ -8,6 +8,5 @@ function prettify(line) {
         return word[0].toUpperCase() + word.substring(1);
     })
 
-    console.log(words.join(' '));
     return words.join(' ');
 }
