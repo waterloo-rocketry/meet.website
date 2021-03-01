@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%; overflow: hidden;">
   <head>
     <meta charset="utf-8">
-    <title>Single Page Apps for GitHub Pages</title>
+    <title>Waterloo Rocketry Meeting Room</title>
+  </head>
+  <body style="height: 100%; margin: 0;">
+    <div id="meet" style="height: 100%;"></div>
+    <script src='https://meet.jit.si/external_api.js'></script>
+    <script src='prettify.js'></script>
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // MIT License
@@ -28,19 +33,17 @@
         l.pathname.split('/').slice(0, 1).join('/');
     
       const paths = l.pathname.slice(1).split('/').map(path => path.replace(/&/g, '~and~'));
-      const roomNameQuery = paths.length > 0 ? 'room=' + paths[0] : "";
-      const roomDescQuery = paths.length > 1 ? '&desc=' + paths[1] : "";
+      const roomName = paths.length > 0 ? paths[0] : "bay_area";
 
-      const search = (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
+      const desc = paths.length > 1 ? paths[1] : prettify(roomName);
 
-      const redirect = host + '?' + roomNameQuery + roomDescQuery + search
-
-
-      l.replace(redirect);
-
+      api = new JitsiMeetExternalAPI("meet.jit.si", {
+        roomName: roomName,
+        parentNode: document.querySelector("#meet"),
+        configOverwrite: {
+          subject: desc,
+        }
+      });
     </script>
-  </head>
-  <body>
   </body>
 </html>
