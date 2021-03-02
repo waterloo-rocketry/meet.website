@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html style="height: 100%; overflow: hidden;">
+  <head>
+    <meta charset="utf-8">
+    <title>Waterloo Rocketry Meeting Room</title>
+  </head>
+  <body style="height: 100%; margin: 0;">
+    <div id="meet" style="height: 100%;"></div>
+    <script src='https://meet.jit.si/external_api.js'></script>
+    <script src='prettify.js'></script>
+    <script type="text/javascript">
+      const l = window.location;
+    
+      const paths = l.pathname.slice(1).split('/');
+      const roomName = paths.length > 0 ? paths[0] : "bay_area";
+
+      const desc = paths.length > 1 ? paths[1] : prettify(roomName);
+
+      api = new JitsiMeetExternalAPI("meet.jit.si", {
+        roomName: roomName,
+        parentNode: document.querySelector("#meet"),
+        configOverwrite: {
+          subject: desc,
+        }
+      });
+    </script>
+  </body>
+</html>

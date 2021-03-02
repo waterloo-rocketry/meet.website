@@ -3,17 +3,9 @@
 <head>
   <title>Waterloo Rocketry Meeting Room</title>
 </head>
-<body style="height: 100%; margin: 0;">
-<div id="meet" style="height: 100%;"></div>
-<script src='https://meet.jit.si/external_api.js'></script>
+<body>
 <script>
-  api = new JitsiMeetExternalAPI("meet.jit.si", {
-    roomName: "bay_area",
-    parentNode: document.querySelector("#meet"),
-    configOverwrite: {
-      subject: 'Bay Area'
-    }
-  });
+  window.location.replace(window.location.origin + '/bay_area');
 </script>
 </body>
 </html>
