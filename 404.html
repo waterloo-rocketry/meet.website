@@ -2,7 +2,19 @@
 <html>
   <head>
     <script>
-      const route = window.location.pathname == '/' ? '/bay_area' : window.location.pathname;
+      let route;
+
+      switch (window.location.pathname) {
+        case '/' :
+          route = '/bay_area';
+          break;
+        case '/2' :
+          route = '/bay_area2';
+          break;
+        default:
+          route = window.location.pathname;
+      }
+
       window.location.href = 'https://meet.jit.si' + route;
     </script>
   </head>
