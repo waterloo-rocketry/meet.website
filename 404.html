@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<html style="height: 100%; overflow: hidden;">
+<html>
   <head>
-    <meta charset="utf-8">
-    <title>Waterloo Rocketry Meeting Room</title>
-    <link rel="icon" href="favicon.ico">
-  </head>
-  <body style="height: 100%; margin: 0;">
-    <div id="meet" style="height: 100%;"></div>
-    <script src='https://meet.jit.si/external_api.js'></script>
-    <script src='prettify.js'></script>
-    <script type="text/javascript">
-      const l = window.location;
-    
-      const paths = l.pathname.slice(1).split('/');
-      const roomName = paths.length > 0 ? paths[0] : "bay_area";
-
-      const desc = paths.length > 1 ? paths[1] : prettify(roomName);
-
-      api = new JitsiMeetExternalAPI("meet.jit.si", {
-        roomName: roomName,
-        parentNode: document.querySelector("#meet"),
-        configOverwrite: {
-          subject: desc,
-        }
-      });
+    <script>
+      const route = window.location.pathname == '/' ? '/bay_area' : window.location.pathname;
+      window.location.href = 'https://meet.jit.si' + route;
     </script>
+  </head>
+  <body>
+    Redirecting to <a href="https://meet.jit.si/">https://meet.jit.si/</a>...
   </body>
 </html>
